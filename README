@@ -1,0 +1,21 @@
+This is my basic Conways game of life implementation. Currently it doesn't do much, simply print out the next state of the grid on to the console every second. To run it, do the following:
+
+     conways  [input grid]
+
+Where [input grid] is something along the lines of:
+
+[[0,0,0,0,0], [0,1,1,1,0], [0,0,0,0,0]]
+
+0 = dead cells, 1 = live cells
+
+The above will represent a grid like:
+
+0 0 0 0 0
+0 1 1 1 0 
+0 0 0 0 0
+
+You must make sure that all live cells are fully enclosed by dead cells, i.e. all the edges of the grid should be made up of zeros (dead cells) otherwise things won't work properly.
+
+This will print the next state of the grid to the console, it will try to maintain as small a grid as possible, if the number of rows or columns with only dead cells on the edge of the grid reaches 10, it will compress all those rows/columns into one. Since they don't contain any life cells they are extraneous.
+
+One thing to be aware of is this, if you end up with multiple gliders going in two opposite directions (or near enough) the grid will quickly begin to expand so that it soon won't fit properly on the screen, maybe at some point I will make a UI that is a little more flexible (maybe using curses or something), in the meantime this is a limitation to be aware of.

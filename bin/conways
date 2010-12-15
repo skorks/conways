@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.expand_path(File.join(File.dirname(__FILE__), '../lib/'))) unless $:.include?(File.expand_path(File.join(File.dirname(__FILE__), '../lib')))
+
+require 'trollop'
+require 'conways'
+
+opts = Trollop::options do
+  banner <<-EOS
+Usage:
+     conways  [input grid]
+where [input grid] is something along the lines of:
+[[0,0,0,0,0], [0,1,1,1,0], [0,0,0,0,0]]
+where 0 = dead cells, 1 = live cells
+this will represent a grid like:
+
+0 0 0 0 0
+0 1 1 1 0 
+0 0 0 0 0
+
+you must make sure that all live cells are fully enclosed by 
+dead cells, i.e. all the edges of the grid should be made 
+up of zeros (dead cells)
+  EOS
+end
+
+begin
+  input = eval(ARGV[0])
+  life = Conways::Life.new(input)
+  life.live
+rescue StandardError => e
+  puts "Your input probably wan't valid"
+  puts e
+end
