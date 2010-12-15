@@ -29,6 +29,7 @@ begin
   life = Conways::Life.new(input)
   life.live
 rescue StandardError => e
-  puts "Your input probably wan't valid"
-  puts e
+  puts "Your input was invalid somehow: #{e}"
+rescue SyntaxError => e
+  puts "Your input didn't have correct syntax: #{e}"
 end
