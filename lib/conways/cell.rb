@@ -1,30 +1,35 @@
-class Cell
- class << self
-   def live
-     1
-   end
+module Conways 
+  class Cell
+    LIVE = 1
+    DEAD = 0
+    class << self
+      def live_one
+        Cell.new Cell::LIVE
+      end
 
-   def dead
-     0
-   end
- end
+      def dead_one
+        Cell.new Cell::DEAD
+      end
+    end
 
- attr_accessor :neighbours, :state, :next_state, :previous_state
- def initialize(state)
-   @state = state
-   @next_state = nil
- end
+    attr_accessor :state, :next_state
+    def initialize(state)
+      raise "Cell must be live or dead" unless state == Cell::LIVE || state == Cell::DEAD
+      @state = state
+      @next_state = nil
+    end
 
- def live?
-   @state == Cell.live
- end
+    def live?
+      @state == Cell::LIVE
+    end
 
- def dead?
-   @state == Cell.dead
- end
+    def dead?
+      @state == Cell::DEAD
+    end
 
- def update_to_next_generation_state
-   @state = @next_state
-   @next_state = nil
- end
+    def move_to_next_state
+      @state = @next_state
+      @next_state = nil
+    end
+  end
 end

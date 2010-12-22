@@ -23,13 +23,14 @@ dead cells, i.e. all the edges of the grid should be made
 up of zeros (dead cells)
   EOS
 end
+Conways::Life.new(ARGV.join("")).live
 
-begin
-  input = eval(ARGV[0])
-  life = Conways::Life.new(input)
-  life.live
-rescue StandardError => e
-  puts "Your input was invalid somehow: #{e}"
-rescue SyntaxError => e
-  puts "Your input didn't have correct syntax: #{e}"
-end
+#begin
+  #input = eval(ARGV[0])
+  #life = Conways::Life.new(input)
+  #life.live
+#rescue StandardError => e
+  #puts "Your input was invalid somehow: #{e}"
+#rescue SyntaxError => e
+  #puts "Your input didn't have correct syntax: #{e}"
+#end
